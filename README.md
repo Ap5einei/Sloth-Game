@@ -1,2 +1,5 @@
-# Sloth Game
- Pixi.js/Javascript
+# PIXI project template
+
+Tutorial: https://gamedev.land/pixi_project_template/
+
+
