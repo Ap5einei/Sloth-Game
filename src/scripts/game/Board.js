@@ -9,11 +9,25 @@ export class Board {
         this.rows = App.config.board.rows;
         this.cols = App.config.board.cols;
         this.create();
+        this.ajustPosition();
     }
 
     create() {
         this.createFields();
+        this.createTiles();
     }
+
+    createTiles() {
+        this.fields.forEach(field => this.createTile(field));
+    }
+
+    createTile(field) {
+        const tile = TileFactory.generate();
+        field.setTile(tile);
+        this.container.addChild(tile.sprite);
+    }
+
+    
 
     createFields() {
         for (let row = 0; row < this.rows; row++) {
@@ -27,4 +41,12 @@ export class Board {
         this.fields.push(field);
         this.container.addChild(field.sprite);
     }
+
+    ajustPosition() {
+        this.fieldSize = this.fields[0].sprite.width;
+        this.width = this.cols * this.fieldSize;
+        this.height = this.rows * this.fieldSize;
+        this.container.x = (window.innerWidth - this.width) / 2 + this.fieldSize / 2;
+        this.container.y = (window.innerHeight - this.height) / 2 + this.fieldSize / 2;
+}
 }

@@ -8,7 +8,9 @@ export class Game {
 
         const field = new Field(1, 1);
         this.container.addChild(field.sprite);
+        
         this.ajustPosition();
+
         this.board = new Board();
         this.container.addChild(this.board.container);
 
